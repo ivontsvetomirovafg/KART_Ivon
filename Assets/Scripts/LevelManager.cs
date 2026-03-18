@@ -2,6 +2,7 @@ using NUnit.Framework;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine;
 
@@ -30,6 +31,7 @@ public class LevelManager : MonoBehaviour
     private int lapPlayer;
     [SerializeField]
     public int totalLaps;
+    public GameObject winPanel;
 
     private void Awake()
     {
@@ -52,6 +54,7 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(1);
         countDownText.text = "GO!";
         yield return new WaitForSeconds(1);
+        countDownText.text = "";
         //Aqu� que se puedan mover los coches
         for (int i = 0; i < cars.Count; i++)
         {
@@ -89,6 +92,12 @@ public class LevelManager : MonoBehaviour
             }
         }
         positionPlayertext.text = (indicePlayer + 1).ToString() + "º";
+        lapPlayerText.text = cars[indicePlayer].lap.ToString() + "/" + totalLaps.ToString();
+
+        if(cars[indicePlayer].lap == 3)
+        {
+            Final();
+        }
     }
     void SortCars()
     {
@@ -113,5 +122,16 @@ public class LevelManager : MonoBehaviour
             _tiempoVuelta.Milliseconds.ToString("00"));
     }
     //tiempo: time.SetActive = true;
+    
+    public void Final()
+    {
+        winPanel.SetActive(true);
+    }
+
+    public void Menu()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
+
 
