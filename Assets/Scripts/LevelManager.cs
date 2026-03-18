@@ -31,11 +31,16 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     public int totalLaps;
 
+    private void Awake()
+    {
+        cars[GameManager.instance.coche].tag = "Player";
+    }
 
     void Start()
     {
         StartCoroutine(CountDown());
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<CarController>();
+
     }
     IEnumerator CountDown()
     {
@@ -46,6 +51,7 @@ public class LevelManager : MonoBehaviour
         countDownText.text = "1";
         yield return new WaitForSeconds(1);
         countDownText.text = "GO!";
+        yield return new WaitForSeconds(1);
         //Aqu� que se puedan mover los coches
         for (int i = 0; i < cars.Count; i++)
         {
@@ -82,7 +88,7 @@ public class LevelManager : MonoBehaviour
                 break;
             }
         }
-        positionPlayertext.text = (indicePlayer + 1).ToString() + "�";
+        positionPlayertext.text = (indicePlayer + 1).ToString() + "º";
     }
     void SortCars()
     {

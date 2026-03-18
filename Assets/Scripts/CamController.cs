@@ -18,6 +18,5 @@ public class CamController : MonoBehaviour
     {
         transform.position = player.position;
         transform.rotation = Quaternion.Slerp(transform.rotation, player.rotation, damping);
-        
     }
 }

@@ -5,15 +5,15 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField]
     private GameObject panelSlots;
-
+    
     public void StartButton()
     {
         panelSlots.SetActive(true);
     }
 
-    public void SlotButton(int carIndex)
+    public void SlotButton(int coche)
     {
-        GameManager.selectedCar = carIndex;
+        GameManager.instance.coche = coche;
         SceneManager.LoadScene("Race");
     }
 }
