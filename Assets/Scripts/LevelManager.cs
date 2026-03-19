@@ -32,6 +32,14 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     public int totalLaps;
     public GameObject winPanel;
+    [SerializeField]
+    private AudioClip race;
+    [SerializeField]
+    private AudioClip musica;
+
+    [SerializeField] 
+    private GameObject panelPause;
+    
 
     private void Awake()
     {
@@ -46,6 +54,7 @@ public class LevelManager : MonoBehaviour
     }
     IEnumerator CountDown()
     {
+        AudioManager.Instance.PlaySFX(race);
         countDownText.text = "3";
         yield return new WaitForSeconds(1);
         countDownText.text = "2";
@@ -55,6 +64,8 @@ public class LevelManager : MonoBehaviour
         countDownText.text = "GO!";
         yield return new WaitForSeconds(1);
         countDownText.text = "";
+
+        AudioManager.Instance.PlayMusic(musica, 1);
         //Aqu� que se puedan mover los coches
         for (int i = 0; i < cars.Count; i++)
         {
@@ -132,6 +143,25 @@ public class LevelManager : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+    public void Pause()
+    {
+        if(panelPause.activeInHierarchy == false)
+        {
+            AudioManager.Instance.FadeOutMusic(1.5f);
+            panelPause.SetActive(true);
+            Time.timeScale = 0;
+        }
+        else
+        {
+            AudioManager.Instance.SetMusicVolume(0.6f);
+            panelPause.SetActive(false);
+            Time.timeScale = 1;
+        }
+    }
+    public void Exit()
+    {
+        Application.Quit();
+    }   
 }
 
 

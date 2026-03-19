@@ -530,6 +530,7 @@ GameObject:
   - component: {fileID: 5792042909219759918}
   - component: {fileID: 4169305428208645223}
   - component: {fileID: 3099481458026297327}
+  - component: {fileID: 1169478738960903102}
   - component: {fileID: 495379080488219862}
   - component: {fileID: 2203206024526638662}
   m_Layer: 0
@@ -547,7 +548,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7437205077710053278}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.007288062, z: -0, w: 0.9999735}
+  m_LocalRotation: {x: 0, y: -0.007286718, z: 0, w: 0.9999735}
   m_LocalPosition: {x: 21.96, y: 1.0074399, z: 34.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -685,7 +686,33 @@ MonoBehaviour:
   - {fileID: 5413452950550486275}
   - {fileID: 4666672214953759006}
   - {fileID: 7550321537471566507}
-  sensorsDistance: 10
+  sensorsDistance: 5
+--- !u!114 &1169478738960903102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7437205077710053278}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c76abbbcddc6cf04aaf6b7c5536fe9f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CarController
+  wheelFR: {fileID: 4360352951310443951}
+  wheelFL: {fileID: 5275291709772706829}
+  wheelBR: {fileID: 1129146095768720162}
+  wheelBL: {fileID: 7374150142152943112}
+  transFR: {fileID: 6128124344817450380}
+  transFL: {fileID: 6991066202941399386}
+  transBR: {fileID: 2434688845024054978}
+  transBL: {fileID: 4769483103409449396}
+  parMotor: -800
+  maxRot: 45
+  maxSpeed: 150
+  brakeForce: 500
+  meshRenderer: {fileID: 0}
+  rb: {fileID: 4169305428208645223}
 --- !u!64 &495379080488219862
 MeshCollider:
   m_ObjectHideFlags: 0
