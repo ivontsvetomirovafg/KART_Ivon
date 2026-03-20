@@ -19,6 +19,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI positionPlayertext;
     [SerializeField]
+    private TextMeshProUGUI WinPositionPlayertext;
+    [SerializeField]
     private TextMeshProUGUI lapPlayerText;
     [SerializeField]
     private TextMeshProUGUI lapTimeText;
@@ -105,7 +107,7 @@ public class LevelManager : MonoBehaviour
         positionPlayertext.text = (indicePlayer + 1).ToString() + "º";
         lapPlayerText.text = cars[indicePlayer].lap.ToString() + "/" + totalLaps.ToString();
 
-        if(cars[indicePlayer].lap == 3)
+        if(cars[indicePlayer].lap == 4)
         {
             Final();
         }
@@ -137,6 +139,16 @@ public class LevelManager : MonoBehaviour
     public void Final()
     {
         winPanel.SetActive(true);
+        WinPositionPlayertext.text = positionPlayertext.text;
+
+        for (int i = 0; i < cars.Count; i++)
+        {
+            if (cars[i].tag == "Player")
+            {
+                cars[i].GetComponent<CarController>().enabled = true;
+                cars[i].GetComponent<CarIA>().enabled = true;
+            }
+        }
     }
 
     public void Menu()

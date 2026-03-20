@@ -38,11 +38,11 @@ public class CarController : MonoBehaviour
         brake = playerInput.actions["Brake"].ReadValue<float>();
         if (brake > 0)
         {
-            meshRenderer.material.SetColor("_EmissionColor", Color.red);
+            meshRenderer.materials[2].SetColor("_EmissionColor", Color.red);
         }
         else
         {
-            meshRenderer.material.SetColor("_EmissionColor", Color.black);
+            meshRenderer.materials[2].SetColor("_EmissionColor", Color.black);
         }
     }
     private void FixedUpdate()
