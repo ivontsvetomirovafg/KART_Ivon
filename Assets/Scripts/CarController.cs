@@ -22,6 +22,8 @@ public class CarController : MonoBehaviour
     [SerializeField]
     private MeshRenderer meshRenderer;
     public Rigidbody rb;
+    [SerializeField]
+    private bool miCoche;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -36,13 +38,29 @@ public class CarController : MonoBehaviour
         aceleration = playerInput.actions["Acelerate"].ReadValue<float>();
         steer = playerInput.actions["Steer"].ReadValue<float>();
         brake = playerInput.actions["Brake"].ReadValue<float>();
-        if (brake > 0)
+        if (miCoche)
         {
-            meshRenderer.materials[2].SetColor("_EmissionColor", Color.red);
-        }
+            if (brake > 0)
+            {
+                meshRenderer.material.SetColor("_EmissionColor", Color.red);
+            }
+            else
+            {
+                meshRenderer.material.SetColor("_EmissionColor", Color.black);
+            }
+        
+            }
         else
         {
-            meshRenderer.materials[2].SetColor("_EmissionColor", Color.black);
+
+            if (brake > 0)
+            {
+                meshRenderer.materials[2].SetColor("_EmissionColor", Color.red);
+            }
+            else
+            {
+                meshRenderer.materials[2].SetColor("_EmissionColor", Color.black);
+            }
         }
     }
     private void FixedUpdate()
